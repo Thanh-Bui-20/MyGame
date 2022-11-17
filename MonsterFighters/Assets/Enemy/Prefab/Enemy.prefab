@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Evil Mushroom
   characterLevel: 10
-  damage: 5
+  damage: 8
   maxHP: 30
   currentHP: 30
 --- !u!1 &8805892287488342522

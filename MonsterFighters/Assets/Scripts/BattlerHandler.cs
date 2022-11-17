@@ -11,10 +11,12 @@ public class BattlerHandler : MonoBehaviour
 
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
+    //public Animator PlayerAnimator;
+    //public Animator EnemyAnimator;
 
     Unit _playerUnit;
     Unit _enemyUnit;
-
+    public gameOverScreen gameOverScreen;
     public BattleState gameState;
     public Text dialogText;
     public BattlerHud playerHUD;
@@ -24,8 +26,8 @@ public class BattlerHandler : MonoBehaviour
     {
         gameState = BattleState.START;
         StartCoroutine(BattleSetup());
+        //PlayerAnimator = playerPrefab.GetComponent<Animator>();
     }
-
 
     //Setting up the scene of the game
     IEnumerator BattleSetup()
@@ -41,7 +43,7 @@ public class BattlerHandler : MonoBehaviour
         playerHUD.SetBattleHud(_playerUnit);
         enemyHUD.SetBattleHud(_enemyUnit);
 
-        yield return new WaitForSeconds(2f); //wait before letting the player pick an action button;
+        yield return new WaitForSeconds(4f); //wait before letting the player pick an action button;
 
         gameState = BattleState.PLAYERTURN;
         PlayerTurn();
@@ -70,6 +72,8 @@ public class BattlerHandler : MonoBehaviour
 
     }
 
+    
+
     IEnumerator EnemyAttackTurn()
     {
         dialogText.text = _enemyUnit.characterName + " enemy attacks!";
@@ -95,12 +99,15 @@ public class BattlerHandler : MonoBehaviour
 
     void BattleComplete() //Show text when either the player or the enemy win
     {
+        
         if (gameState == BattleState.WON)
         {
             dialogText.text = "Victory to you!!";
+            gameOverScreen.SetupgameOver();
         } else if (gameState == BattleState.LOST)
         {
             dialogText.text = "You have been killed";
+            gameOverScreen.SetupgameOver();
         }
     }
 
@@ -108,18 +115,20 @@ public class BattlerHandler : MonoBehaviour
     {
        
         dialogText.text = "Choose an action:";
+        
     }
 
     IEnumerator PlayerHeal()
     {
         _playerUnit.HealPlayer(5);
 
+        gameState = BattleState.ENEMYTURN;
+
         playerHUD.SetHPValue(_playerUnit.currentHP);
         dialogText.text = "Renewed your strength!";
 
         yield return new WaitForSeconds(2f);
 
-        gameState = BattleState.ENEMYTURN;
         StartCoroutine(EnemyAttackTurn());
     }
 
@@ -130,12 +139,11 @@ public class BattlerHandler : MonoBehaviour
             return;
         StartCoroutine(PlayerAttack());
         
-   
     }
 
     public void HealButton()
     {
-        //When the player turn start, aka. when the attack button is pressed or not
+        //When the player turn start, aka. when the heal button is pressed or not
         if (gameState != BattleState.PLAYERTURN)
             return;
         StartCoroutine(PlayerHeal());

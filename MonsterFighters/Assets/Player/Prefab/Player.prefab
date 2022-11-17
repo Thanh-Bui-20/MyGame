@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 538914014860811952}
   - component: {fileID: 5718015394088859387}
+  - component: {fileID: 8474297563106746639}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -47,8 +48,27 @@ MonoBehaviour:
   characterName: Red Hood
   characterLevel: 12
   damage: 10
-  maxHP: 40
-  currentHP: 40
+  maxHP: 35
+  currentHP: 35
+--- !u!95 &8474297563106746639
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070258385960909735}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7b11f7ce96a6cf4885e47b63c39f1ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8328027128058626000
 GameObject:
   m_ObjectHideFlags: 0
