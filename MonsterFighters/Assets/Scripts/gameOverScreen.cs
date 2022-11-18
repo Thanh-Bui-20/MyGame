@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class gameOverScreen : MonoBehaviour
 {
     
-    
     public void SetupgameOver()
     {
         gameObject.SetActive(true);

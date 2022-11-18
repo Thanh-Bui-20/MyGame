@@ -22,6 +22,9 @@ public class BattlerHandler : MonoBehaviour
     public BattlerHud playerHUD;
     public BattlerHud enemyHUD;
     // Start is called before the first frame update
+
+
+ 
     void Start()
     {
         gameState = BattleState.START;
@@ -29,6 +32,8 @@ public class BattlerHandler : MonoBehaviour
         //PlayerAnimator = playerPrefab.GetComponent<Animator>();
     }
 
+    //Source of code: Brackeys - "Turn-based Combat in Unity"
+    //link to tutorial video: https://www.youtube.com/watch?v=_1pz_ohupPs&t=1016s
     //Setting up the scene of the game
     IEnumerator BattleSetup()
     {
@@ -48,7 +53,8 @@ public class BattlerHandler : MonoBehaviour
         gameState = BattleState.PLAYERTURN;
         PlayerTurn();
     }
-
+    //Source of code: Brackeys - "Turn-based Combat in Unity"
+    //link to tutorial video: https://www.youtube.com/watch?v=_1pz_ohupPs&t=1016s
     IEnumerator PlayerAttack()
     {
         bool characterisDead = _enemyUnit.TakeDamage(_playerUnit.damage);
@@ -71,9 +77,8 @@ public class BattlerHandler : MonoBehaviour
         
 
     }
-
-    
-
+    //Source of code: Brackeys - "Turn-based Combat in Unity"
+    //link to tutorial video: https://www.youtube.com/watch?v=_1pz_ohupPs&t=1016s
     IEnumerator EnemyAttackTurn()
     {
         dialogText.text = _enemyUnit.characterName + " enemy attacks!";
@@ -96,7 +101,8 @@ public class BattlerHandler : MonoBehaviour
             PlayerTurn();
         }
     }
-
+    //Source of code: Brackeys - "Turn-based Combat in Unity"
+    //link to tutorial video: https://www.youtube.com/watch?v=_1pz_ohupPs&t=1016s
     void BattleComplete() //Show text when either the player or the enemy win
     {
         
@@ -117,7 +123,8 @@ public class BattlerHandler : MonoBehaviour
         dialogText.text = "Choose an action:";
         
     }
-
+    //Source of code: Brackeys - "Turn-based Combat in Unity"
+    //link to tutorial video: https://www.youtube.com/watch?v=_1pz_ohupPs&t=1016s
     IEnumerator PlayerHeal()
     {
         _playerUnit.HealPlayer(5);
@@ -132,6 +139,8 @@ public class BattlerHandler : MonoBehaviour
         StartCoroutine(EnemyAttackTurn());
     }
 
+    //Source of code: Brackeys - "Turn-based Combat in Unity"
+    //link to tutorial video: https://www.youtube.com/watch?v=_1pz_ohupPs&t=1016s
     public void AttackButton()
     {
         //When the player turn start, aka. when the attack button is pressed or not
@@ -140,7 +149,8 @@ public class BattlerHandler : MonoBehaviour
         StartCoroutine(PlayerAttack());
         
     }
-
+    //Source of code: Brackeys - "Turn-based Combat in Unity"
+    //link to tutorial video: https://www.youtube.com/watch?v=_1pz_ohupPs&t=1016s
     public void HealButton()
     {
         //When the player turn start, aka. when the heal button is pressed or not
